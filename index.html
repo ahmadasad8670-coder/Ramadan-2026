@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رمضان المبارک 2026 | اسد احمد</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', 'Noto Nastaliq Urdu', serif; 
+            background-color: #020617; 
+            color: #f8fafc; 
+            scroll-behavior: smooth; 
+        }
+        .urdu-font { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2.5; }
+        .gold-glow { box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+        .alarm-active { animation: pulse 1s infinite; background-color: #ef4444 !important; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="antialiased pb-12">
+
+    <header class="relative py-12 px-6 text-center overflow-hidden">
+        <div class="relative z-10">
+            <h2 class="urdu-font text-3xl md:text-4xl text-amber-500 mb-4">اَلسَّلامُ عَلَيْکم وَرَحْمَةُ اللهِ وَبَرَکاتُہ</h2>
+            <h1 class="urdu-font text-5xl md:text-7xl text-amber-400 mb-2">رمضان کریم 2026</h1>
+            <p class="text-slate-400 tracking-widest uppercase text-sm font-bold">ڈیزائن بذریعہ: اسعد احمد (Asad Ahmad)</p>
+        </div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 opacity-10 text-[15rem] pointer-events-none text-amber-500">🌙</div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4">
+        
+        <div class="bg-gradient-to-br from-amber-700 to-amber-950 rounded-3xl p-8 mb-10 text-center shadow-2xl relative border border-amber-500/30">
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <button onclick="toggleAlarm('sehri')" id="btn-sehri" class="urdu-font bg-slate-800 hover:bg-slate-700 text-white px-6 py-1 rounded-full border border-slate-600 transition text-sm">
+                    🔔 سحری الارم: <span id="sehri-alarm-status">بند ہے</span>
+                </button>
+                <button onclick="toggleAlarm('iftar')" id="btn-iftar" class="urdu-font bg-slate-800 hover:bg-slate-700 text-white px-6 py-1 rounded-full border border-slate-600 transition text-sm">
+                    🔔 افطار الارم: <span id="iftar-alarm-status">بند ہے</span>
+                </button>
+            </div>
+            
+            <h3 class="urdu-font text-amber-100 text-xl mb-4">افطار میں باقی وقت (05:50 PM)</h3>
+            <div id="countdown" dir="ltr" class="text-6xl md:text-8xl font-mono font-bold text-white drop-shadow-lg">00:00:00</div>
+            <p id="status-message" class="urdu-font text-amber-200 mt-4 text-lg">"روزہ دار کے لیے دو خوشیاں ہیں، ایک افطار کے وقت..."</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-10">
+            <section class="bg-slate-900 border border-slate-800 p-8 rounded-3xl gold-glow">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="urdu-font text-2xl text-amber-400">آج کے اوقات</h2>
+                    <span id="fasting-status" class="urdu-font px-4 py-1 rounded-full text-sm font-bold bg-amber-500/10 text-amber-400 border border-amber-500/20">لوڈنگ...</span>
+                </div>
+                <div class="space-y-6 text-right">
+                    <div class="flex justify-between items-center p-5 bg-slate-800/50 rounded-2xl border-r-4 border-amber-500">
+                        <span class="urdu-font text-xl">ختمِ سحر:</span>
+                        <span class="text-2xl font-bold text-amber-100 font-mono">05:09 AM</span>
+                    </div>
+                    <div class="flex justify-between items-center p-5 bg-orange-500/10 rounded-2xl border-r-4 border-orange-500">
+                        <span class="urdu-font text-xl">افطار:</span>
+                        <span class="text-2xl font-bold text-orange-400 font-mono">05:50 PM</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bg-slate-900 border border-slate-800 p-8 rounded-3xl">
+                <h2 class="urdu-font text-2xl text-amber-400 mb-6">زکوٰۃ کیلکولیٹر</h2>
+                <div class="space-y-4">
+                    <input type="number" id="cash" placeholder="نقد رقم اور بچت" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-4 text-right focus:border-amber-500 outline-none transition">
+                    <input type="number" id="gold" placeholder="سونا اور چاندی کی مالیت" class="w-full bg-slate-950 border border-slate-700 rounded-xl p-4 text-right focus:border-amber-500 outline-none transition">
+                    <button onclick="calculateZakat()" class="urdu-font w-full bg-amber-500 hover:bg-amber-600 text-black font-bold py-3 rounded-xl transition text-xl">حساب لگائیں (2.5%)</button>
+                    <div id="resultBox" class="hidden p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl text-center">
+                        <p class="urdu-font text-sm text-slate-400">واجب الادا زکوٰۃ:</p>
+                        <p id="zakatAmount" dir="ltr" class="text-3xl font-bold text-amber-500">₹ 0.00</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="bg-slate-900 border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+            <div class="p-6 border-b border-slate-800 bg-slate-900/50 text-right">
+                <h2 class="urdu-font text-2xl text-amber-400">مکمل رمضان کیلنڈر 2026</h2>
+                <p class="text-xs text-slate-500 mt-1 uppercase tracking-widest">فروری — مارچ | لکھنؤ ٹائم ٹیبل</p>
+            </div>
+            <div class="overflow-x-auto max-h-[500px] overflow-y-auto custom-scrollbar">
+                <table class="w-full text-right">
+                    <thead class="sticky top-0 bg-slate-950 text-amber-500 urdu-font text-sm z-20">
+                        <tr>
+                            <th class="p-4 border-b border-slate-800">رمضان</th>
+                            <th class="p-4 border-b border-slate-800">تاریخ</th>
+                            <th class="p-4 border-b border-slate-800 text-center">ختمِ سحر</th>
+                            <th class="p-4 border-b border-slate-800 text-center">افطار</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetable-body" class="text-slate-300 divide-y divide-slate-800/50">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-20 text-center text-slate-400 px-6 urdu-font">
+        <div class="text-amber-500 text-2xl font-bold mb-2">created by  (Asad Ahmad)</div>
+        <p>© 2026 رمضان پورٹل | تمام اوقات آپ کے فراہم کردہ نقشے کے مطابق ہیں۔</p>
+    </footer>
+
+    <audio id="alarm-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" preload="auto"></audio>
+
+    <script>
+        const ramadanData = [
+            { day: 1, date: "19 Feb", sehri: "05:09", iftar: "17:50" },
+            { day: 2, date: "20 Feb", sehri: "05:08", iftar: "17:50" },
+            { day: 3, date: "21 Feb", sehri: "05:08", iftar: "17:51" },
+            { day: 4, date: "22 Feb", sehri: "05:07", iftar: "17:51" },
+            { day: 5, date: "23 Feb", sehri: "05:07", iftar: "17:52" },
+            { day: 6, date: "24 Feb", sehri: "05:06", iftar: "17:53" },
+            { day: 7, date: "25 Feb", sehri: "05:05", iftar: "17:54" },
+            { day: 8, date: "26 Feb", sehri: "05:04", iftar: "17:54" },
+            { day: 9, date: "27 Feb", sehri: "05:03", iftar: "17:54" },
+            { day: 10, date: "28 Feb", sehri: "05:02", iftar: "17:55" },
+            { day: 11, date: "01 Mar", sehri: "05:01", iftar: "17:56" },
+            { day: 12, date: "02 Mar", sehri: "05:00", iftar: "17:57" },
+            { day: 13, date: "03 Mar", sehri: "04:59", iftar: "17:57" },
+            { day: 14, date: "04 Mar", sehri: "04:58", iftar: "17:58" },
+            { day: 15, date: "05 Mar", sehri: "04:57", iftar: "17:58" },
+            { day: 16, date: "06 Mar", sehri: "04:56", iftar: "17:59" },
+            { day: 17, date: "07 Mar", sehri: "04:55", iftar: "17:59" },
+            { day: 18, date: "08 Mar", sehri: "04:54", iftar: "18:00" },
+            { day: 19, date: "09 Mar", sehri: "04:53", iftar: "18:00" },
+            { day: 20, date: "10 Mar", sehri: "04:52", iftar: "18:01" },
+            { day: 21, date: "11 Mar", sehri: "04:51", iftar: "18:01" },
+            { day: 22, date: "12 Mar", sehri: "04:50", iftar: "18:02" },
+            { day: 23, date: "13 Mar", sehri: "04:49", iftar: "18:02" },
+            { day: 24, date: "14 Mar", sehri: "04:48", iftar: "18:02" },
+            { day: 25, date: "15 Mar", sehri: "04:46", iftar: "18:03" },
+            { day: 26, date: "16 Mar", sehri: "04:45", iftar: "18:04" },
+            { day: 27, date: "17 Mar", sehri: "04:44", iftar: "18:04" },
+            { day: 28, date: "18 Mar", sehri: "04:43", iftar: "18:04" },
+            { day: 29, date: "19 Mar", sehri: "04:42", iftar: "18:05" },
+            { day: 30, date: "20 Mar", sehri: "04:42", iftar: "18:05" }
+        ];
+
+        let alarmSettings = { sehri: false, iftar: false };
+        const alarmAudio = document.getElementById('alarm-sound');
+
+        function toggleAlarm(type) {
+            alarmSettings[type] = !alarmSettings[type];
+            document.getElementById(`${type}-alarm-status`).innerText = alarmSettings[type] ? "آن ہے" : "بند ہے";
+            document.getElementById(`btn-${type}`).classList.toggle('bg-amber-600');
+            // Unlock audio on mobile
+            alarmAudio.play().then(() => alarmAudio.pause()).catch(() => {});
+        }
+
+        const tableBody = document.getElementById('timetable-body');
+        ramadanData.forEach(item => {
+            const row = document.createElement('tr');
+            const iftarDisp = item.iftar.split(':')[0] > 12 ? (item.iftar.split(':')[0]-12) + ":" + item.iftar.split(':')[1] : item.iftar;
+            row.innerHTML = `
+                <td class="p-4 font-bold text-amber-600">${item.day}</td>
+                <td class="p-4">${item.date}</td>
+                <td class="p-4 text-center font-mono">${item.sehri} AM</td>
+                <td class="p-4 text-center font-mono">${iftarDisp} PM</td>
+            `;
+            tableBody.appendChild(row);
+        });
+
+        function updateTimer() {
+            const now = new Date();
+            const target = new Date("February 19, 2026 17:50:00").getTime();
+            const diff = target - now.getTime();
+
+            const badge = document.getElementById('fasting-status');
+            const cd = document.getElementById('countdown');
+
+            if (diff > 0) {
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / (1000 * 60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+                cd.innerText = `${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+                badge.innerText = "حالت: روزہ (فاسٹنگ)";
+            } else {
+                cd.innerText = "افطار کا وقت";
+                badge.innerText = "حالت: افطار ہو گیا";
+            }
+
+            // Alarm Check
+            const currentTime = now.getHours().toString().padStart(2,'0') + ":" + now.getMinutes().toString().padStart(2,'0');
+            if(alarmSettings.sehri && currentTime === "05:09") alarmAudio.play();
+            if(alarmSettings.iftar && currentTime === "17:50") alarmAudio.play();
+        }
+
+        function calculateZakat() {
+            const c = parseFloat(document.getElementById('cash').value) || 0;
+            const g = parseFloat(document.getElementById('gold').value) || 0;
+            const res = (c + g) * 0.025;
+            document.getElementById('resultBox').classList.remove('hidden');
+            document.getElementById('zakatAmount').innerText = '₹ ' + res.toLocaleString();
+        }
+
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
